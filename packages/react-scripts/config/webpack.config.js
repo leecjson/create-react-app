@@ -138,7 +138,7 @@ module.exports = function(webpackEnv) {
     return loaders;
   };
 
-  return {
+  const exportConfig = {
     mode: isEnvProduction ? 'production' : isEnvDevelopment && 'development',
     // Stop compilation early in production
     bail: isEnvProduction,
@@ -716,4 +716,12 @@ module.exports = function(webpackEnv) {
     // our own hints via the FileSizeReporter
     performance: false,
   };
+  const configHookScriptRelativePath = process.env.CONFIG_HOOK_SCRIPT;
+  if (configHookScriptRelativePath) {
+    const configHookScriptFullPath = path.resolve(paths.appPath, configHookScriptRelativePath);
+    if (fs.existsSync(configHookScriptFullPath)) {
+      return require(configHookScriptFullPath)(exportConfig);
+    }
+  }
+  return exportConfig;
 };
