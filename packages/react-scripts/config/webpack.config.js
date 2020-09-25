@@ -716,11 +716,11 @@ module.exports = function(webpackEnv) {
     // our own hints via the FileSizeReporter
     performance: false,
   };
-  const configHookScriptRelativePath = process.env.CONFIG_HOOK_SCRIPT;
-  if (configHookScriptRelativePath) {
-    const configHookScriptFullPath = path.resolve(paths.appPath, configHookScriptRelativePath);
-    if (fs.existsSync(configHookScriptFullPath)) {
-      return require(configHookScriptFullPath)(exportConfig);
+  const externalConfigRelativePath = process.env.EXTERNAL_CONFIG;
+  if (externalConfigRelativePath) {
+    const externalConfigFullPath = path.resolve(paths.appPath, externalConfigRelativePath);
+    if (fs.existsSync(externalConfigFullPath)) {
+      return require(externalConfigFullPath)(exportConfig);
     }
   }
   return exportConfig;
