@@ -132,6 +132,11 @@ checkBrowsers(paths.appPath, isInteractive)
       proxyConfig,
       urls.lanUrlForConfig
     );
+    if (process.env.DEV_SERVER_WRITE_TO_DISK) {
+      serverConfig.writeToDisk = (filePath) => {
+        return new RegExp(process.env.DEV_SERVER_WRITE_TO_DISK).test(filePath);
+      };
+    }
     const devServer = new WebpackDevServer(compiler, serverConfig);
     // Launch WebpackDevServer.
     devServer.listen(port, HOST, err => {
