@@ -47,7 +47,7 @@ function verifyTypeScriptSetup() {
   let firstTimeSetup = false;
 
   if (!fs.existsSync(paths.appTsConfig)) {
-    if (verifyNoTypeScript()) {
+    if (/*verifyNoTypeScript()*/ true) {
       return;
     }
     writeJson(paths.appTsConfig, {});
