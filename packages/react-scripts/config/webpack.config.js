@@ -514,6 +514,7 @@ module.exports = function(webpackEnv) {
                 },
                 'sass-loader',
                 {
+                  webpackImporter: false,
                   sassOptions: {
                     includePaths: [path.resolve(paths.appPath, './node_modules')]
                   }
@@ -539,6 +540,7 @@ module.exports = function(webpackEnv) {
                 },
                 'sass-loader',
                 {
+                  webpackImporter: false,
                   sassOptions: {
                     includePaths: [path.resolve(paths.appPath, './node_modules')]
                   }
