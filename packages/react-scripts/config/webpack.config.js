@@ -515,7 +515,9 @@ module.exports = function(webpackEnv) {
                 },
                 'sass-loader',
                 {
-                  includePaths: [path.resolve(paths.appPath, './node_modules')]
+                  sassOptions: {
+                    includePaths: [path.resolve(paths.appPath, './node_modules')]
+                  }
                 },
               ),
               // Don't consider CSS imports dead code even if the
@@ -538,7 +540,9 @@ module.exports = function(webpackEnv) {
                 },
                 'sass-loader',
                 {
-                  includePaths: [path.resolve(paths.appPath, './node_modules')]
+                  sassOptions: {
+                    includePaths: [path.resolve(paths.appPath, './node_modules')]
+                  }
                 },
               ),
             },
