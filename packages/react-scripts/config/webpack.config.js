@@ -129,10 +129,9 @@ module.exports = function(webpackEnv) {
         },
         {
           loader: require.resolve(preProcessor),
-          options: {
+          options: Object.assign({}, preProcessorOptions, {
             sourceMap: true,
-            options: preProcessorOptions,
-          },
+          }),
         }
       );
     }
